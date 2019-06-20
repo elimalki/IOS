@@ -7,7 +7,8 @@ target 'Talinor' do
   pod 'Firebase'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
-  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
+  pod 'SnapKit'
   # Pods for Talinor
 
 end

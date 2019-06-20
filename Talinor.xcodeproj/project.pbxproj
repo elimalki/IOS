@@ -8,21 +8,43 @@
 
 /* Begin PBXBuildFile section */
 		447A184D22BBB0CB00174422 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A184C22BBB0CB00174422 /* AppDelegate.swift */; };
-		447A184F22BBB0CB00174422 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A184E22BBB0CB00174422 /* ViewController.swift */; };
-		447A185222BBB0CB00174422 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 447A185022BBB0CB00174422 /* Main.storyboard */; };
 		447A185422BBB0CE00174422 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 447A185322BBB0CE00174422 /* Assets.xcassets */; };
 		447A185722BBB0CE00174422 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 447A185522BBB0CE00174422 /* LaunchScreen.storyboard */; };
+		447A186622BBB43300174422 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A186522BBB43300174422 /* LoginViewController.swift */; };
+		447A186822BBB45100174422 /* UILoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A186722BBB45100174422 /* UILoginView.swift */; };
+		447A186C22BBB4A800174422 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A186B22BBB4A800174422 /* FoundationExtensions.swift */; };
+		447A187022BBB4F100174422 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A186F22BBB4F100174422 /* UIViewExtensions.swift */; };
+		447A187222BBB51000174422 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A187122BBB51000174422 /* UIViewControllerExtensions.swift */; };
+		447A187722BBB56500174422 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A187622BBB56500174422 /* RegistrationViewController.swift */; };
+		447A187922BBB58000174422 /* UIRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A187822BBB58000174422 /* UIRegistrationView.swift */; };
+		447A187C22BBB65600174422 /* AuthFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A187B22BBB65600174422 /* AuthFieldView.swift */; };
+		447A187E22BBB68300174422 /* AuthValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A187D22BBB68300174422 /* AuthValidator.swift */; };
+		447A188022BBC8DD00174422 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 447A187F22BBC8DD00174422 /* GoogleService-Info.plist */; };
+		447A188222BBC9F500174422 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A188122BBC9F500174422 /* AppUser.swift */; };
+		447A188422BBCA2900174422 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A188322BBCA2900174422 /* AuthController.swift */; };
+		447A188722BBCF7300174422 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A188622BBCF7300174422 /* MenuViewController.swift */; };
 		B2FBA260E7D44BD81D45B8DB /* Pods_Talinor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CBE231F74978DE5D2F03B3 /* Pods_Talinor.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		447A184922BBB0CB00174422 /* Talinor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talinor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		447A184C22BBB0CB00174422 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		447A184E22BBB0CB00174422 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		447A185122BBB0CB00174422 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		447A185322BBB0CE00174422 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		447A185622BBB0CE00174422 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		447A185822BBB0CE00174422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		447A186522BBB43300174422 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		447A186722BBB45100174422 /* UILoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILoginView.swift; sourceTree = "<group>"; };
+		447A186B22BBB4A800174422 /* FoundationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
+		447A186F22BBB4F100174422 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		447A187122BBB51000174422 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		447A187622BBB56500174422 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		447A187822BBB58000174422 /* UIRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRegistrationView.swift; sourceTree = "<group>"; };
+		447A187B22BBB65600174422 /* AuthFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFieldView.swift; sourceTree = "<group>"; };
+		447A187D22BBB68300174422 /* AuthValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthValidator.swift; sourceTree = "<group>"; };
+		447A187F22BBC8DD00174422 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		447A188122BBC9F500174422 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		447A188322BBCA2900174422 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
+		447A188622BBCF7300174422 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		70D45C42D5F26184625B4E8E /* Pods-Talinor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Talinor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Talinor/Pods-Talinor.debug.xcconfig"; sourceTree = "<group>"; };
 		B47691CD77F4767D33DA69D0 /* Pods-Talinor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Talinor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Talinor/Pods-Talinor.release.xcconfig"; sourceTree = "<group>"; };
 		F1CBE231F74978DE5D2F03B3 /* Pods_Talinor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Talinor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,14 +91,137 @@
 		447A184B22BBB0CB00174422 /* Talinor */ = {
 			isa = PBXGroup;
 			children = (
+				447A188522BBCF6400174422 /* Menu */,
+				447A186122BBB3ED00174422 /* Auth */,
+				447A186922BBB47B00174422 /* Helper */,
+				447A185F22BBB3D000174422 /* Application */,
+			);
+			path = Talinor;
+			sourceTree = "<group>";
+		};
+		447A185F22BBB3D000174422 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				447A187F22BBC8DD00174422 /* GoogleService-Info.plist */,
 				447A184C22BBB0CB00174422 /* AppDelegate.swift */,
-				447A184E22BBB0CB00174422 /* ViewController.swift */,
-				447A185022BBB0CB00174422 /* Main.storyboard */,
 				447A185322BBB0CE00174422 /* Assets.xcassets */,
 				447A185522BBB0CE00174422 /* LaunchScreen.storyboard */,
 				447A185822BBB0CE00174422 /* Info.plist */,
 			);
-			path = Talinor;
+			name = Application;
+			sourceTree = "<group>";
+		};
+		447A186122BBB3ED00174422 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				447A187322BBB54500174422 /* Registration */,
+				447A186222BBB3F300174422 /* Login */,
+				447A188322BBCA2900174422 /* AuthController.swift */,
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
+		447A186222BBB3F300174422 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				447A186322BBB3FA00174422 /* UI */,
+				447A186422BBB40200174422 /* Controller */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		447A186322BBB3FA00174422 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				447A186722BBB45100174422 /* UILoginView.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		447A186422BBB40200174422 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				447A186522BBB43300174422 /* LoginViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		447A186922BBB47B00174422 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				447A187A22BBB62000174422 /* CustomViews */,
+				447A186A22BBB49C00174422 /* Extensions */,
+				447A187D22BBB68300174422 /* AuthValidator.swift */,
+				447A188122BBC9F500174422 /* AppUser.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		447A186A22BBB49C00174422 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				447A186E22BBB4CB00174422 /* UIKit */,
+				447A186D22BBB4C400174422 /* Foundation */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		447A186D22BBB4C400174422 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				447A186B22BBB4A800174422 /* FoundationExtensions.swift */,
+			);
+			name = Foundation;
+			sourceTree = "<group>";
+		};
+		447A186E22BBB4CB00174422 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				447A186F22BBB4F100174422 /* UIViewExtensions.swift */,
+				447A187122BBB51000174422 /* UIViewControllerExtensions.swift */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		447A187322BBB54500174422 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				447A187422BBB54C00174422 /* UI */,
+				447A187522BBB55000174422 /* Controller */,
+			);
+			name = Registration;
+			sourceTree = "<group>";
+		};
+		447A187422BBB54C00174422 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				447A187822BBB58000174422 /* UIRegistrationView.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		447A187522BBB55000174422 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				447A187622BBB56500174422 /* RegistrationViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		447A187A22BBB62000174422 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				447A187B22BBB65600174422 /* AuthFieldView.swift */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		447A188522BBCF6400174422 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				447A188622BBCF7300174422 /* MenuViewController.swift */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		F1F123987B2C20E1CD8B6199 /* Pods */ = {
@@ -150,7 +295,7 @@
 			files = (
 				447A185722BBB0CE00174422 /* LaunchScreen.storyboard in Resources */,
 				447A185422BBB0CE00174422 /* Assets.xcassets in Resources */,
-				447A185222BBB0CB00174422 /* Main.storyboard in Resources */,
+				447A188022BBC8DD00174422 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,8 +333,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Talinor/Pods-Talinor-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -197,8 +347,13 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -214,22 +369,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				447A184F22BBB0CB00174422 /* ViewController.swift in Sources */,
+				447A187E22BBB68300174422 /* AuthValidator.swift in Sources */,
+				447A188422BBCA2900174422 /* AuthController.swift in Sources */,
+				447A186622BBB43300174422 /* LoginViewController.swift in Sources */,
+				447A186C22BBB4A800174422 /* FoundationExtensions.swift in Sources */,
+				447A188222BBC9F500174422 /* AppUser.swift in Sources */,
+				447A186822BBB45100174422 /* UILoginView.swift in Sources */,
+				447A187022BBB4F100174422 /* UIViewExtensions.swift in Sources */,
+				447A188722BBCF7300174422 /* MenuViewController.swift in Sources */,
+				447A187C22BBB65600174422 /* AuthFieldView.swift in Sources */,
+				447A187722BBB56500174422 /* RegistrationViewController.swift in Sources */,
 				447A184D22BBB0CB00174422 /* AppDelegate.swift in Sources */,
+				447A187222BBB51000174422 /* UIViewControllerExtensions.swift in Sources */,
+				447A187922BBB58000174422 /* UIRegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		447A185022BBB0CB00174422 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				447A185122BBB0CB00174422 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		447A185522BBB0CE00174422 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -365,11 +523,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2EHKRYA7EN;
 				INFOPLIST_FILE = Talinor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = q12.Talinor;
+				PRODUCT_BUNDLE_IDENTIFIER = Talinor.lineup.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -384,11 +543,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2EHKRYA7EN;
 				INFOPLIST_FILE = Talinor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = q12.Talinor;
+				PRODUCT_BUNDLE_IDENTIFIER = Talinor.lineup.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>942205403892-svj6be2htv6aqj6qb0l0p55qs6n4hmpd.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.942205403892-svj6be2htv6aqj6qb0l0p55qs6n4hmpd</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>942205403892-jqvdd7rf94i3rck7747mi8fujk7omq3d.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDH18Vj9tnZaQ5lA7aUU59Mm9R2KosKUzY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>942205403892</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Talinor.lineup.com</string>
+	<key>PROJECT_ID</key>
+	<string>talinor-3026f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>talinor-3026f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:942205403892:ios:22ba905d3ad95663</string>
+	<key>DATABASE_URL</key>
+	<string>https://talinor-3026f.firebaseio.com</string>
+</dict>
+</plist>
