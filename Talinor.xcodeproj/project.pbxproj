@@ -23,6 +23,11 @@
 		447A188222BBC9F500174422 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A188122BBC9F500174422 /* AppUser.swift */; };
 		447A188422BBCA2900174422 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A188322BBCA2900174422 /* AuthController.swift */; };
 		447A188722BBCF7300174422 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A188622BBCF7300174422 /* MenuViewController.swift */; };
+		448A164022BCF465006E172E /* UIMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A163F22BCF465006E172E /* UIMenuView.swift */; };
+		448A164322BCFF1F006E172E /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A164222BCFF1F006E172E /* WebViewController.swift */; };
+		448A164822BD0B39006E172E /* ScanDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A164722BD0B39006E172E /* ScanDevicesViewController.swift */; };
+		448A164A22BD0B4D006E172E /* UIScanDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A164922BD0B4D006E172E /* UIScanDevices.swift */; };
+		448A164C22BD118E006E172E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 448A164B22BD118E006E172E /* CoreBluetooth.framework */; };
 		B2FBA260E7D44BD81D45B8DB /* Pods_Talinor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CBE231F74978DE5D2F03B3 /* Pods_Talinor.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +50,11 @@
 		447A188122BBC9F500174422 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		447A188322BBCA2900174422 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		447A188622BBCF7300174422 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		448A163F22BCF465006E172E /* UIMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMenuView.swift; sourceTree = "<group>"; };
+		448A164222BCFF1F006E172E /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		448A164722BD0B39006E172E /* ScanDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDevicesViewController.swift; sourceTree = "<group>"; };
+		448A164922BD0B4D006E172E /* UIScanDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScanDevices.swift; sourceTree = "<group>"; };
+		448A164B22BD118E006E172E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		70D45C42D5F26184625B4E8E /* Pods-Talinor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Talinor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Talinor/Pods-Talinor.debug.xcconfig"; sourceTree = "<group>"; };
 		B47691CD77F4767D33DA69D0 /* Pods-Talinor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Talinor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Talinor/Pods-Talinor.release.xcconfig"; sourceTree = "<group>"; };
 		F1CBE231F74978DE5D2F03B3 /* Pods_Talinor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Talinor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				448A164C22BD118E006E172E /* CoreBluetooth.framework in Frameworks */,
 				B2FBA260E7D44BD81D45B8DB /* Pods_Talinor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +76,7 @@
 		25C2107DAF5028E47A97EB24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				448A164B22BD118E006E172E /* CoreBluetooth.framework */,
 				F1CBE231F74978DE5D2F03B3 /* Pods_Talinor.framework */,
 			);
 			name = Frameworks;
@@ -91,6 +103,8 @@
 		447A184B22BBB0CB00174422 /* Talinor */ = {
 			isa = PBXGroup;
 			children = (
+				448A164422BD0B1D006E172E /* ScanDevices */,
+				448A164122BCFF11006E172E /* WebViewController */,
 				447A188522BBCF6400174422 /* Menu */,
 				447A186122BBB3ED00174422 /* Auth */,
 				447A186922BBB47B00174422 /* Helper */,
@@ -219,9 +233,59 @@
 		447A188522BBCF6400174422 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				447A188622BBCF7300174422 /* MenuViewController.swift */,
+				448A163E22BCF44E006E172E /* UI */,
+				448A163D22BCF442006E172E /* Controller */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		448A163D22BCF442006E172E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				447A188622BBCF7300174422 /* MenuViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		448A163E22BCF44E006E172E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				448A163F22BCF465006E172E /* UIMenuView.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		448A164122BCFF11006E172E /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				448A164222BCFF1F006E172E /* WebViewController.swift */,
+			);
+			name = WebViewController;
+			sourceTree = "<group>";
+		};
+		448A164422BD0B1D006E172E /* ScanDevices */ = {
+			isa = PBXGroup;
+			children = (
+				448A164622BD0B2B006E172E /* UI */,
+				448A164522BD0B25006E172E /* Controller */,
+			);
+			name = ScanDevices;
+			sourceTree = "<group>";
+		};
+		448A164522BD0B25006E172E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				448A164722BD0B39006E172E /* ScanDevicesViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		448A164622BD0B2B006E172E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				448A164922BD0B4D006E172E /* UIScanDevices.swift */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		F1F123987B2C20E1CD8B6199 /* Pods */ = {
@@ -370,6 +434,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				447A187E22BBB68300174422 /* AuthValidator.swift in Sources */,
+				448A164A22BD0B4D006E172E /* UIScanDevices.swift in Sources */,
+				448A164822BD0B39006E172E /* ScanDevicesViewController.swift in Sources */,
+				448A164022BCF465006E172E /* UIMenuView.swift in Sources */,
 				447A188422BBCA2900174422 /* AuthController.swift in Sources */,
 				447A186622BBB43300174422 /* LoginViewController.swift in Sources */,
 				447A186C22BBB4A800174422 /* FoundationExtensions.swift in Sources */,
@@ -381,6 +448,7 @@
 				447A187722BBB56500174422 /* RegistrationViewController.swift in Sources */,
 				447A184D22BBB0CB00174422 /* AppDelegate.swift in Sources */,
 				447A187222BBB51000174422 /* UIViewControllerExtensions.swift in Sources */,
+				448A164322BCFF1F006E172E /* WebViewController.swift in Sources */,
 				447A187922BBB58000174422 /* UIRegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

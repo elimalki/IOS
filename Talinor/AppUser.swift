@@ -39,6 +39,15 @@ struct AppUser{
     }
     
     init(){ }
+    
+    init(dictionary: [String : Any]){
+        self.email = dictionary["email"] as? String
+        self.company_name = dictionary["company_name"] as? String
+        self.date_creation = dictionary["date_creation"] as? String
+        self.first_name = dictionary["first_name"] as? String
+        self.last_name = dictionary["last_name"] as? String
+        self.phone_number = dictionary["phone_number"] as? String
+    }
 }
 
 extension AppUser{

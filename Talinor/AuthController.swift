@@ -47,17 +47,24 @@ class AuthController{
     
     func checkActualLogin(){
         delegate?.startAuth()
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            guard self.authType == .login else { return }
-            
-            guard let user = user else {
-                self.delegate?.failAuth("User doesnt login now!")
+        guard let email = Auth.auth().currentUser?.email else {
+            delegate?.failAuth("User not loggined!")
+            return
+        }
+        
+        getDataFromRemote(by: email)
+    }
+    
+    private func getDataFromRemote(by email: String){
+        channelReference.document(email).getDocument(completion: {[weak self] (document, error) in
+            guard let data = document?.data() else {
+                self?.delegate?.failAuth("info user nil!")
                 return
             }
             
-            _User.shared.info = AppUser(user)
-            self.delegate?.successAuth()
-        }
+            _User.shared.info = AppUser(dictionary: data)
+            self?.delegate?.successAuth()
+        })
     }
     
     func tryAuthWithNewCredentials(){
@@ -94,13 +101,15 @@ class AuthController{
                 return
             }
             
-            guard let user = user?.user else {
+            guard let _ = user?.user else {
                 self.delegate?.failAuth("No such user!")
                 return
             }
             
-            _User.shared.info = AppUser(user)
-            self.delegate?.successAuth()
+            UserDefaults.standard.set(email, forKey: "aurhEmail")
+            UserDefaults.standard.set(password, forKey: "authPassword")
+            
+            self.getDataFromRemote(by: email)
         }
     }
     
@@ -128,7 +137,6 @@ class AuthController{
                     return
                 }
                 
-                // add new reference to user
                 _User.shared.info = AppUser(email: email,
                                             company_name: company_name,
                                             date_creation: DateFormatter().string(from: Date()),

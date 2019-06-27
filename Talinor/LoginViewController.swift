@@ -19,7 +19,7 @@ class LoginViewController: UIViewController{
         setupUI()
         setupActions()
         setupDelegates()
-        
+        setAuthDataIfExist()
         tryAutoLogin()
     }
     
@@ -59,9 +59,12 @@ class LoginViewController: UIViewController{
     }
     
     private func redirectToMenu(){
-        let vc = MenuViewController()
-        
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(MenuViewController(), animated: true)
+    }
+    
+    private func setAuthDataIfExist(){
+        (UI.fieldsStackView.arrangedSubviews as? [AuthFieldView])?.first{ $0.typeOfAuthField == .email }?.textField.text = UserDefaults.standard.string(forKey: "aurhEmail")
+        (UI.fieldsStackView.arrangedSubviews as? [AuthFieldView])?.first{ $0.typeOfAuthField == .password }?.textField.text = UserDefaults.standard.string(forKey: "authPassword")
     }
     
     private func tryAutoLogin(){
