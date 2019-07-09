@@ -13,7 +13,7 @@ class AuthValidator{
     static func validate(field: TypeOfAuthFields, text: String?) -> String? {
         var errors: String = ""
         let minLenth = field.validLenthText
-        let name = field.placeholder
+        let name = field.placeholder ?? ""
         
         if text == nil || text == ""{
             errors += "\(name) must be not empty!"

@@ -17,6 +17,7 @@ enum AuthType{
 protocol AuthControllerDelegate{
     func startAuth()
     func successAuth()
+    func failAutoAuth(_ error: String?)
     func failAuth(_ error: String?)
 
     func successResetPassword(to email: String)
@@ -24,6 +25,7 @@ protocol AuthControllerDelegate{
 }
 
 extension AuthControllerDelegate{
+    func failAutoAuth(_ error: String?){}
     func failResetPassword(_ error: String?){}
     func successResetPassword(to email: String){}
 }
@@ -36,15 +38,13 @@ class AuthController{
     }
     
     var dataAuth: [String: String] = [:]
-    private var authFields: [AuthFieldView]?
     private let registrationQueue = DispatchQueue(label: "registration", attributes: .concurrent)
     private let reigstrationGroup = DispatchGroup()
     
     var delegate: AuthControllerDelegate?
     
-    init(authFields: [AuthFieldView], typeAuth: AuthType){
+    init(typeAuth: AuthType){
         self.authType = typeAuth
-        self.authFields = authFields
     }
     
     private func saveData(user info: AppUser){
@@ -52,14 +52,45 @@ class AuthController{
         delegate?.successAuth()
     }
     
-    func checkActualLogin(){
+    func tryAutoAuth(){
         delegate?.startAuth()
         guard let email = Auth.auth().currentUser?.email else {
-            delegate?.failAuth("User not loggined!")
+            delegate?.failAutoAuth("Auto auth fail.")
             return
         }
         
         getDataFromRemote(by: email)
+    }
+    
+    func tryAuth(with authFields: [AuthFieldView]){
+        
+        for authView in authFields{
+            let text = authView.textField.text
+            
+            if let error = authView.validationError(){
+                delegate?.failAuth(error)
+                return
+            }
+            
+            dataAuth[authView.typeOfAuthField.likeParamField] = text!
+        }
+        
+        if authType == .login{
+            tryLogin()
+        } else {
+            tryRegistration()
+        }
+    }
+    
+    func resetPassword(with email: String){
+        Auth.auth().sendPasswordReset(withEmail: email) {[weak self] (error) in
+            guard let error = error else {
+                self?.delegate?.successResetPassword(to: email)
+                return
+            }
+            
+            self?.delegate?.failResetPassword(error.localizedDescription)
+        }
     }
     
     private func getDataFromRemote(by email: String){
@@ -74,32 +105,9 @@ class AuthController{
         })
     }
     
-    func tryAuthWithNewCredentials(){
-        guard let authViews = authFields else { return }
-        
-        var errors = ""
-        for authView in authViews{
-            let text = authView.textField.text
-            
-            if let error = authView.validationError(){
-                errors.append("\(error)\n")
-                delegate?.failAuth(error)
-                return
-            }
-            
-            dataAuth[authView.typeOfAuthField.likeParamField] = text!
-        }
-        
-        if authType == .login{
-            tryAuth()
-        } else {
-            tryRegistration()
-        }
-    }
-    
-    private func tryAuth(){
+    private func tryLogin(){
         let email = dataAuth[TypeOfAuthFields.email.likeParamField]!
-        let password = dataAuth[TypeOfAuthFields.email.likeParamField]!
+        let password = dataAuth[TypeOfAuthFields.password.likeParamField]!
         
         delegate?.startAuth()
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
@@ -161,25 +169,18 @@ class AuthController{
         }
     }
     
-    func resetPassword(with email: String){
-        Auth.auth().sendPasswordReset(withEmail: email) {[weak self] (error) in
-            guard let error = error else {
-                self?.delegate?.successResetPassword(to: email)
-                return
-            }
-            
-            self?.delegate?.failResetPassword(error.localizedDescription)
-        }
-    }
-    
-    private func logOut(){
+    static func logOut() -> Bool{
         do {
-            try Auth.auth().signOut()
             
+            try Auth.auth().signOut()
+            UserDefaults.standard.set(nil, forKey: "aurhEmail")
+            UserDefaults.standard.set(nil, forKey: "authPassword")
+            
+            return true
         } catch let error {
             
             print("Error when try logout:\(error.localizedDescription)")
-            
+            return false
         }
     }
 }

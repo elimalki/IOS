@@ -11,7 +11,7 @@ import UIKit
 class LoginViewController: UIViewController{
     
     lazy var UI = UILoginView(superView: self.view)
-    var authController: AuthController!
+    var authController: AuthController = AuthController(typeAuth: .login)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +25,15 @@ class LoginViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        authController?.delegate = self
+    
         hideNavBar()
-        addKeyboardCheckStateForSuperScroll()
+        setupDelegates()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        authController?.delegate = nil
-        NotificationCenter.default.removeObserver(self)
+        unsubscribeDelegates()
     }
     
     private func setupUI(){
@@ -48,7 +46,15 @@ class LoginViewController: UIViewController{
         UI.forgotPasswordButton.addTarget(self, action: #selector(forgotPaswordAction), for: .touchUpInside)
     }
     
-    private func setupDelegates(){}
+    private func setupDelegates(){
+        addKeyboardCheckStateForSuperScroll()
+        authController.delegate = self
+    }
+    
+    private func unsubscribeDelegates(){
+        authController.delegate = self
+        NotificationCenter.default.removeObserver(self)
+    }
     
     private func redirectToMenu(){
         navigationController?.pushViewController(MenuViewController(), animated: true)
@@ -60,15 +66,12 @@ class LoginViewController: UIViewController{
     }
     
     private func tryAutoLogin(){
-        guard let authFields = UI.fieldsStackView.arrangedSubviews as? [AuthFieldView] else { return }
-        
-        authController = AuthController(authFields: authFields, typeAuth: .login)
-        authController.delegate = self
-        authController.checkActualLogin()
+        authController.tryAutoAuth()
     }
     
     private func showAllertResetPassword(with message: String = "Enter you account email."){
-        showAlertWith(textField: "Enter email", message: "Enter you account email.", okTitle: "Accept", cancelTitle: "Cancel", complite: { (code) in
+        showAlertWith(textField: "Enter email", message: message, okTitle: "Accept", cancelTitle: "Cancel", complite: { (code) in
+            
             guard let email = code else { return }
             guard let error = AuthValidator.validate(field: .email, text: email) else {
                 self.authController.resetPassword(with: email)
@@ -80,7 +83,8 @@ class LoginViewController: UIViewController{
     }
     
     @objc func loginAction(){
-        authController.tryAuthWithNewCredentials()
+        UI.superView.endEditing(true)
+        authController.tryAuth(with: UI.authFields)
     }
     
     @objc func registrationAction(){
@@ -96,7 +100,7 @@ class LoginViewController: UIViewController{
 extension LoginViewController: AuthControllerDelegate{
     
     func startAuth() {
-        UI.buttonLogin.showSpinner()
+        UI.buttonLogin.showSpinner(spinnerStyle: .gray)
     }
     
     func successAuth() {
@@ -109,41 +113,18 @@ extension LoginViewController: AuthControllerDelegate{
         UI.buttonLogin.hideSpinner()
     }
     
+    func failAutoAuth(_ error: String?) {
+        UI.buttonLogin.hideSpinner()
+    }
     //MARK: - reset password
-//    func sendResetPasswordCode() {
-//        showAlertWithField(textField: "Enter code", message: "We send code in you email. Write under.") { (code) in
-//            guard let code = code else { return }
-//
-//            self.showAlertWithField(textField: "Enter new password", message: "Write new password.", complite: { (newPassword) in
-//                guard let newPassword = newPassword else { return }
-//
-//                self.authController.confirmPasswordReset(with: code, and: newPassword)
-//            })
-//        }
-//    }
     
     func successResetPassword(to email: String) {
         UI.forgotPasswordButton.hideSpinner()
-        showOkAlert(and: "We send messag to \(email).")
+        showOkAlert(and: "We send messag to: \(email).")
     }
     
     func failResetPassword(_ error: String?) {
         showOkAlert(and: error)
         UI.forgotPasswordButton.hideSpinner()
     }
-
-//
-//    func failResetPasswordCode(_ error: String?) {
-//        let vc = UIAlertController(title: "Fail", message: (error ?? "") + "\n", preferredStyle: .alert)
-//        vc.addAction(UIAlertAction(title: "Send code again.", style: .default, handler: { (_) in
-//            self.sendResetPasswordCode()
-//        }))
-//
-//
-//        present(vc, animated: true, completion: nil)
-//    }
-//
-//    func failResetPasswordEmail(_ error: String?) {
-//
-//    }
 }

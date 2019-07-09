@@ -39,7 +39,7 @@ class UILoginView: UIViewElementsActions{
         
         scrollContentView.addSubview(label)
         label.snp.makeConstraints({ (make) in
-            make.top.equalTo(superView.safeAreaLayoutGuide).inset(120)
+            make.top.equalToSuperview().inset(120)
             make.height.equalTo(40)
             make.left.right.equalToSuperview().inset(10)
             make.bottom.equalTo(fieldsStackView.snp.top).offset(-24)
@@ -61,9 +61,8 @@ class UILoginView: UIViewElementsActions{
             make.bottom.equalTo(buttonLogin.snp.top).offset(-12)
         })
         
-        for typeField in TypeOfAuthFields.loginOnly(){
-            let view = AuthFieldView(type: typeField, withLeftImage: false)
-            stackView.addArrangedSubview(view)
+        for authField in authFields{
+            stackView.addArrangedSubview(authField)
         }
         return stackView
     }()
@@ -154,10 +153,14 @@ class UILoginView: UIViewElementsActions{
         superScroll.addSubview(view)
         view.snp.makeConstraints({ (make) in
             make.edges.equalToSuperview()
-            make.height.equalTo(superView.frame.height + 100)
+            make.height.equalTo(superView.frame.height + 1)
             make.width.equalTo(superView.frame.width)
         })
         return view
+    }()
+    
+    lazy var authFields: [AuthFieldView] = {
+        return TypeOfAuthFields.loginOnly().map{ AuthFieldView(type: $0, withLeftImage: false) }
     }()
     
     func addElementsToSuperView() {

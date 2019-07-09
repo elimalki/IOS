@@ -10,29 +10,26 @@ import UIKit
 
 class RegistrationViewController: UIViewController {
     lazy var UI = UIRegistrationView(superView: self.view)
-    var authController: AuthController!
+    var authController: AuthController = AuthController(typeAuth: .registration)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         setupActions()
-        setupDelegates()
-        initAuthController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         hideNavBar()
-        addKeyboardCheckStateForSuperScroll()
+        setupDelegates()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        authController?.delegate = nil
-        NotificationCenter.default.removeObserver(self)
+        unsubscribeDelegates()
     }
     
     private func setupUI(){
@@ -44,13 +41,14 @@ class RegistrationViewController: UIViewController {
         UI.toLogin.addTarget(self, action: #selector(toLoginAction), for: .touchUpInside)
     }
     
-    private func setupDelegates(){}
-    
-    private func initAuthController(){
-        guard let authFields = UI.fieldsStackView.arrangedSubviews as? [AuthFieldView] else { return }
-        
-        authController = AuthController(authFields: authFields, typeAuth: .registration)
+    private func setupDelegates(){
         authController.delegate = self
+        addKeyboardCheckStateForSuperScroll()
+    }
+    
+    private func unsubscribeDelegates(){
+        authController.delegate = nil
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func redirectToMenu(){
@@ -60,7 +58,7 @@ class RegistrationViewController: UIViewController {
     }
     
     @objc func registrationAction(){
-        authController.tryAuthWithNewCredentials()
+        authController.tryAuth(with: UI.authFields)
     }
     
     @objc func toLoginAction(){

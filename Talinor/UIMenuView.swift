@@ -43,6 +43,21 @@ class UIMenuView: UIViewElementsActions{
     
     var superView: UIView!
     
+    lazy var logOutButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "exit"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        
+        superView.addSubview(button)
+        button.snp.makeConstraints({ (make) in
+            make.top.equalToSuperview().inset(20)
+            make.left.equalToSuperview().inset(10)
+            make.height.equalTo(30)
+            make.width.equalTo(50)
+        })
+        return button
+    }()
+    
     lazy var logoImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "talinor_logo"))
         imageView.contentMode = .scaleAspectFit
@@ -109,6 +124,7 @@ class UIMenuView: UIViewElementsActions{
     
     func addElementsToSuperView() {
         logoImage.isHidden = false
+        logOutButton.isHidden = false
         superView.layoutIfNeeded()
     }
     

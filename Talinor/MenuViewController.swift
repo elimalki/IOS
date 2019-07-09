@@ -15,8 +15,10 @@ class MenuViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupUI()
         setupDelegates()
+        setupActions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,7 +34,9 @@ class MenuViewController: UIViewController{
         UI.addElementsToSuperView()
     }
     
-    private func setupActions(){}
+    private func setupActions(){
+        UI.logOutButton.addTarget(self, action: #selector(logOutAction), for: .touchUpInside)
+    }
     
     private func setupDelegates(){
         UI.collectionView.delegate = self
@@ -47,6 +51,12 @@ class MenuViewController: UIViewController{
     
     private func openScanDevices(){
         navigationController?.pushViewController(ScanDevicesViewController(), animated: true)
+    }
+    
+    @objc func logOutAction(){
+        guard AuthController.logOut() else { return }
+        
+        navigationController?.popViewController(animated: true)
     }
 }
 

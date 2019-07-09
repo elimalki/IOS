@@ -63,9 +63,8 @@ class UIRegistrationView: UIViewElementsActions{
             make.bottom.equalTo(buttonRegistration.snp.top).offset(-12)
         })
         
-        for typeField in TypeOfAuthFields.registrationOnly(){
-            let view = AuthFieldView(type: typeField, withLeftImage: false)
-            stackView.addArrangedSubview(view)
+        for authField in authFields{
+            stackView.addArrangedSubview(authField)
         }
         return stackView
     }()
@@ -144,6 +143,10 @@ class UIRegistrationView: UIViewElementsActions{
             make.width.equalTo(superView.frame.width)
         })
         return view
+    }()
+    
+    lazy var authFields: [AuthFieldView] = {
+        return TypeOfAuthFields.registrationOnly().map{ AuthFieldView(type: $0, withLeftImage: false) }
     }()
     
     func addElementsToSuperView() {
