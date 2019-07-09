@@ -18,8 +18,15 @@ protocol AuthControllerDelegate{
     func startAuth()
     func successAuth()
     func failAuth(_ error: String?)
+
+    func successResetPassword(to email: String)
+    func failResetPassword(_ error: String?)
 }
 
+extension AuthControllerDelegate{
+    func failResetPassword(_ error: String?){}
+    func successResetPassword(to email: String){}
+}
 
 class AuthController{
     var authType: AuthType!
@@ -151,6 +158,17 @@ class AuthController{
             guard let info = _User.shared.info else { self?.delegate?.failAuth("singletone nil"); return }
             
             self?.saveData(user: info)
+        }
+    }
+    
+    func resetPassword(with email: String){
+        Auth.auth().sendPasswordReset(withEmail: email) {[weak self] (error) in
+            guard let error = error else {
+                self?.delegate?.successResetPassword(to: email)
+                return
+            }
+            
+            self?.delegate?.failResetPassword(error.localizedDescription)
         }
     }
     

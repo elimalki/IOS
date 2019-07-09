@@ -32,7 +32,7 @@ class UIScanDevices: UIViewElementsActions{
     
     lazy var connectButton: UIButton = {
         let button = UIButton()
-        button.setTitle("CONNECT", for: .normal)
+        button.setTitle("SCAN", for: .normal)
         button.setTitleColor(.darkGray, for: .normal)
         
         return button
@@ -40,9 +40,11 @@ class UIScanDevices: UIViewElementsActions{
     
     lazy var settingsButton: UIButton = {
         let button = UIButton()
-        button.setTitle("...", for: .normal)
-        button.setTitleColor(.darkGray, for: .normal)
-        
+        button.setTitle("⋮", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        button.titleLabel?.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        button.frame = CGRect(x: 0, y: 0, width: 60, height: 40)
         return button
     }()
     
@@ -86,13 +88,16 @@ class ScanDeviceTableViewCell: UITableViewCell{
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
-        
+        label.textAlignment = .center
         return label
     }()
     
     lazy var uiidLabel: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textAlignment = .center
+        
         return label
     }()
     
@@ -103,7 +108,8 @@ class ScanDeviceTableViewCell: UITableViewCell{
         
         addSubview(stackView)
         stackView.snp.makeConstraints({ (make) in
-            make.edges.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.left.right.equalToSuperview().inset(10)
         })
         
         stackView.addArrangedSubview(nameLabel)

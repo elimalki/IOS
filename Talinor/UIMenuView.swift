@@ -43,16 +43,30 @@ class UIMenuView: UIViewElementsActions{
     
     var superView: UIView!
     
+    lazy var logoImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "talinor_logo"))
+        imageView.contentMode = .scaleAspectFit
+        
+        superView.addSubview(imageView)
+        imageView.snp.makeConstraints({ (make) in
+            make.top.equalToSuperview().inset(30)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(titleLabel.snp.top).offset(-20)
+            make.height.equalTo(80)
+            make.width.equalTo(100)
+        })
+        return imageView
+    }()
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome!"
-        label.textColor = .lightGray
+        label.textColor = .darkGray
         label.font = UIFont.systemFont(ofSize: 43)
         label.textAlignment = .center
         
         superView.addSubview(label)
         label.snp.makeConstraints({ (make) in
-            make.top.equalToSuperview().inset(130)
             make.left.right.equalToSuperview().inset(12)
             make.bottom.equalTo(collectionView.snp.top).offset(-40)
         })
@@ -94,7 +108,7 @@ class UIMenuView: UIViewElementsActions{
     }()
     
     func addElementsToSuperView() {
-        titleLabel.isHidden = false
+        logoImage.isHidden = false
         superView.layoutIfNeeded()
     }
     

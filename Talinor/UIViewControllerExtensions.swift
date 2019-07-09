@@ -111,10 +111,10 @@ extension UIViewController{
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            
             for _view in view.subviews{
                 if let scrollView = _view as? UIScrollView{
-                    scrollView.contentOffset.y += keyboardSize.height
+                    scrollView.setContentOffset(CGPoint(x: 0, y: keyboardSize.height - 100), animated: true)
+                    view.layoutIfNeeded()
                     return
                 }
             }
@@ -124,7 +124,8 @@ extension UIViewController{
     @objc private func keyboardWillHide(notification: NSNotification) {
         for _view in view.subviews{
             if let scrollView = _view as? UIScrollView{
-                scrollView.contentOffset = CGPoint.zero
+                scrollView.setContentOffset(.zero, animated: true)
+                view.layoutIfNeeded()
                 return
             }
         }

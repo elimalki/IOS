@@ -16,6 +16,20 @@ class UILoginView: UIViewElementsActions{
     
     var superView: UIView!
     
+    lazy var logoImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "talinor_logo"))
+        imageView.contentMode = .scaleAspectFit
+        
+        superView.addSubview(imageView)
+        imageView.snp.makeConstraints({ (make) in
+            make.top.equalToSuperview().inset(30)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(80)
+            make.width.equalTo(100)
+        })
+        return imageView
+    }()
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome, back!"
@@ -72,23 +86,6 @@ class UILoginView: UIViewElementsActions{
         return button
     }()
     
-    lazy var debugLable: UILabel = {
-        let label = UILabel()
-        label.text = "1.0.4 debug"
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = #colorLiteral(red: 0.06273943931, green: 0.5384469628, blue: 0.05909318477, alpha: 1)
-        
-        scrollContentView.addSubview(label)
-        label.snp.makeConstraints({ (make) in
-            make.centerY.equalTo(dontRegisterButton)
-            make.width.equalTo(80)
-            make.height.equalTo(40)
-            make.right.equalToSuperview().inset(10)
-            
-        })
-        return label
-    }()
-    
     lazy var dontRegisterButton: UIButton = {
         let button = UIButton()
         button.setTitle("Don't registered?", for: .normal)
@@ -103,6 +100,39 @@ class UILoginView: UIViewElementsActions{
             make.height.equalTo(40)
         })
         return button
+    }()
+    
+    lazy var forgotPasswordButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Forgot password?", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.setTitleColor(.lightGray, for: .normal)
+        button.titleLabel?.numberOfLines = 2
+        
+        scrollContentView.addSubview(button)
+        button.snp.makeConstraints({ (make) in
+            make.centerY.equalTo(dontRegisterButton)
+            make.right.equalToSuperview().inset(10)
+            make.width.equalTo(80)
+            make.height.equalTo(40)
+        })
+        return button
+    }()
+    
+    lazy var debugLable: UILabel = {
+        let label = UILabel()
+        label.text = "1.0.4 debug"
+        label.font = UIFont.systemFont(ofSize: 13)
+        label.textColor = #colorLiteral(red: 0.06273943931, green: 0.5384469628, blue: 0.05909318477, alpha: 1)
+        
+        scrollContentView.addSubview(label)
+        label.snp.makeConstraints({ (make) in
+            make.width.equalTo(80)
+            make.height.equalTo(40)
+            make.bottom.right.equalToSuperview().inset(10)
+            
+        })
+        return label
     }()
     
     lazy var superScroll: UIScrollView = {
@@ -133,6 +163,8 @@ class UILoginView: UIViewElementsActions{
     func addElementsToSuperView() {
         titleLabel.isHidden = false
         debugLable.isHidden = false
+        forgotPasswordButton.isHidden = false
+        logoImage.isHidden = false
         
         superView.layoutIfNeeded()
         superScroll.layoutIfNeeded()

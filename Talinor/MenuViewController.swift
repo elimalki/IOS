@@ -24,6 +24,10 @@ class MenuViewController: UIViewController{
         hideNavBar()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     private func setupUI(){
         UI.addElementsToSuperView()
     }

@@ -25,11 +25,12 @@ class RegistrationViewController: UIViewController {
         super.viewWillAppear(animated)
         
         hideNavBar()
-        addKeyboardNotification()
+        addKeyboardCheckStateForSuperScroll()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         authController?.delegate = nil
         NotificationCenter.default.removeObserver(self)
     }
@@ -44,15 +45,6 @@ class RegistrationViewController: UIViewController {
     }
     
     private func setupDelegates(){}
-    
-    private func addKeyboardNotification(){
-        NotificationCenter.default.addObserver(self, selector: #selector(kbAction),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(kbAction),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-    }
     
     private func initAuthController(){
         guard let authFields = UI.fieldsStackView.arrangedSubviews as? [AuthFieldView] else { return }
@@ -73,20 +65,6 @@ class RegistrationViewController: UIViewController {
     
     @objc func toLoginAction(){
         navigationController?.popViewController(animated: true)
-    }
-    
-    @objc private func kbAction(_ notification: Notification){
-        let userInfo = notification.userInfo!
-        
-        let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-        
-        if notification.name == UIResponder.keyboardWillHideNotification{
-            UI.superScroll.contentInset = UIEdgeInsets.zero
-        } else {
-            UI.superScroll.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height + 10, right: 0)
-        }
-        UI.superScroll.scrollIndicatorInsets = UI.superScroll.contentInset
     }
 }
 

@@ -17,6 +17,21 @@ class UIRegistrationView: UIViewElementsActions{
     
     var superView: UIView!
     
+    lazy var logoImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "talinor_logo"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = #colorLiteral(red: 0.9793191552, green: 0.9800599217, blue: 0.9794338346, alpha: 1)
+        
+        superView.addSubview(imageView)
+        imageView.snp.makeConstraints({ (make) in
+            make.top.equalToSuperview().inset(30)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(80)
+            make.width.equalTo(100)
+        })
+        return imageView
+    }()
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome, New User!"
@@ -26,7 +41,7 @@ class UIRegistrationView: UIViewElementsActions{
         
         scrollContentView.addSubview(label)
         label.snp.makeConstraints({ (make) in
-            make.top.equalToSuperview().inset(120)
+            make.top.equalToSuperview().inset(100)
             make.height.equalTo(40)
             make.left.right.equalToSuperview().inset(10)
             make.bottom.equalTo(fieldsStackView.snp.top).offset(-24)
@@ -111,7 +126,7 @@ class UIRegistrationView: UIViewElementsActions{
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.keyboardDismissMode = .onDrag
-        
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0)
         superView.addSubview(scrollView)
         scrollView.snp.makeConstraints({ (make) in
             make.edges.equalToSuperview()
@@ -125,7 +140,7 @@ class UIRegistrationView: UIViewElementsActions{
         superScroll.addSubview(view)
         view.snp.makeConstraints({ (make) in
             make.edges.equalToSuperview()
-            make.height.equalTo(superView.frame.height + 100)
+            make.height.equalTo(superView.frame.height)
             make.width.equalTo(superView.frame.width)
         })
         return view
@@ -134,6 +149,7 @@ class UIRegistrationView: UIViewElementsActions{
     func addElementsToSuperView() {
         titleLabel.isHidden = false
         debugLable.isHidden = false
+        logoImage.isHidden = false
         
         superView.layoutIfNeeded()
         superScroll.layoutIfNeeded()

@@ -38,6 +38,7 @@ class ScanDevicesViewController: UIViewController{
         
         UI.tableView.dataSource = nil
         UI.tableView.delegate = nil
+        stopScan()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,7 +62,11 @@ class ScanDevicesViewController: UIViewController{
         let connectNavItem = UIBarButtonItem(customView: UI.connectButton)
         let settingsNavItem = UIBarButtonItem(customView: UI.settingsButton)
         
-        navigationItem.rightBarButtonItems = [connectNavItem, settingsNavItem]
+        navigationItem.rightBarButtonItems = [settingsNavItem, connectNavItem]
+        
+        let imageView = UIImageView(image: UIImage(named: "talinor_logo"))
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = imageView
     }
     
     private func showUserInfo(){
@@ -74,22 +79,51 @@ class ScanDevicesViewController: UIViewController{
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func connectAction(){
+    private func openPanelForDevice(with uiid: String){
+        let vc = ControlPanelViewController(uiid: uiid)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func openBluetoothSettings(){
+        guard let url = URL(string: "App-Prefs:root=Bluetooth") else {
+            return
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
+    private func beginScan(){
         peripherals = []
         UI.tableView.reloadData()
         UI.buttonRefresh.showSpinner(spinnerStyle: .gray)
         UI.tableView.isHidden = false
-        
+        UI.buttonRefresh.isHidden = false
+        UI.connectButton.setTitle("STOP", for: .normal)
         scanBLEDevices()
     }
     
+    private func stopScan(){
+        stopScanForBLEDevices()
+        UI.buttonRefresh.hideSpinner()
+        UI.buttonRefresh.isHidden = true
+        UI.connectButton.setTitle("SCAN", for: .normal)
+    }
+    
+    @objc func connectAction(){
+        UI.connectButton.currentTitle == "SCAN" ? beginScan() : stopScan()
+    }
+    
     @objc func settingsAction(){
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Actions", message: "", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Bluetooth settings", style: .default, handler: { (_) in
-            
+            self.openBluetoothSettings()
         }))
         alert.addAction(UIAlertAction(title: "http://www.talinor.co.uk/", style: .default, handler: { (_) in
-            
+            self.openSite()
         }))
         alert.addAction(UIAlertAction(title: "User Info", style: .default, handler: { (_) in
             self.showUserInfo()
@@ -97,6 +131,7 @@ class ScanDevicesViewController: UIViewController{
         alert.addAction(UIAlertAction(title: "Reset User Info", style: .default, handler: { (_) in
             
         }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 }
@@ -116,7 +151,10 @@ extension ScanDevicesViewController: UITableViewDataSource{
 
 extension ScanDevicesViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
+        let uuidString = peripherals[indexPath.row].identifier.uuidString
+        openPanelForDevice(with: uuidString)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -133,11 +171,7 @@ extension ScanDevicesViewController: CBCentralManagerDelegate, CBPeripheralDeleg
         manager.scanForPeripherals(withServices: nil, options: nil)
         
         //stop scanning after 3 seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {[weak self] in
-            self?.stopScanForBLEDevices()
-            self?.UI.buttonRefresh.hideSpinner()
-            self?.UI.buttonRefresh.isHidden = true
-        }
+        
     }
     
     func stopScanForBLEDevices() {

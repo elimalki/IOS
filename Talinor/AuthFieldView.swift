@@ -132,6 +132,8 @@ class AuthFieldView: UIView{
     var typeOfAuthField: TypeOfAuthFields!
     var withLeftImage: Bool!
     
+    var typeFieldLabelHeightConstraint: ConstraintMakerEditable!
+    
     lazy var typeFieldLabel: UILabel = {
         let label = UILabel()
         label.alpha = 0
@@ -139,10 +141,10 @@ class AuthFieldView: UIView{
         label.font = UIFont.systemFont(ofSize: 12)
         addSubview(label)
         label.snp.makeConstraints({ (make) in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().inset(3)
             make.bottom.equalTo(self.textField.snp.top).offset(-5)
             make.left.equalToSuperview().inset(5)
-            make.height.equalTo(20)
+            typeFieldLabelHeightConstraint = make.height.equalTo(10)
         })
         return label
     }()
@@ -204,9 +206,8 @@ class AuthFieldView: UIView{
     }()
     
     lazy var textField: UITextField = {
-        var textField: UITextField!
+        let textField = UITextField()
         
-        textField = UITextField()
         textField.delegate = self
         textField.textAlignment = .center
         textField.returnKeyType = .done
@@ -310,7 +311,8 @@ extension AuthFieldView: UITextFieldDelegate{
         typeFieldLabel.toAlpha(1)
         typeFieldLabel.text = textField.placeholder
         textField.placeholder = ""
-        
+//        typeFieldLabelHeightConstraint.constraint.layoutConstraints.first?.constant = 20
+//        layoutIfNeeded(duration: 0.2)
         return true
     }
     
@@ -324,7 +326,8 @@ extension AuthFieldView: UITextFieldDelegate{
             typeFieldLabel.toAlpha(0)
             buttonState.setImage(nil, for: .normal)
         }
-        
+//        typeFieldLabelHeightConstraint.constraint.layoutConstraints.first?.constant = 10
+//        layoutIfNeeded(duration: 0.2)
         textField.endEditing(true)
         return true
     }

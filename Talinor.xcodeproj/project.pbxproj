@@ -28,6 +28,12 @@
 		448A164822BD0B39006E172E /* ScanDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A164722BD0B39006E172E /* ScanDevicesViewController.swift */; };
 		448A164A22BD0B4D006E172E /* UIScanDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A164922BD0B4D006E172E /* UIScanDevices.swift */; };
 		448A164C22BD118E006E172E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 448A164B22BD118E006E172E /* CoreBluetooth.framework */; };
+		44E6D9B522D4AE9500805B20 /* ControlPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E6D9B422D4AE9500805B20 /* ControlPanelViewController.swift */; };
+		44E6D9B722D4AEB800805B20 /* UIControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E6D9B622D4AEB800805B20 /* UIControlPanel.swift */; };
+		44E6D9BA22D4AF0C00805B20 /* UIControlPanelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E6D9B922D4AF0C00805B20 /* UIControlPanelCollectionViewCell.swift */; };
+		44E6D9BD22D4B1FE00805B20 /* ModelControlPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E6D9BC22D4B1FE00805B20 /* ModelControlPanelViewController.swift */; };
+		44E6D9BF22D4BFFD00805B20 /* InOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E6D9BE22D4BFFD00805B20 /* InOutView.swift */; };
+		44E6D9C122D4D43300805B20 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44E6D9C022D4D43300805B20 /* Storyboard.storyboard */; };
 		B2FBA260E7D44BD81D45B8DB /* Pods_Talinor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CBE231F74978DE5D2F03B3 /* Pods_Talinor.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +61,12 @@
 		448A164722BD0B39006E172E /* ScanDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDevicesViewController.swift; sourceTree = "<group>"; };
 		448A164922BD0B4D006E172E /* UIScanDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScanDevices.swift; sourceTree = "<group>"; };
 		448A164B22BD118E006E172E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		44E6D9B422D4AE9500805B20 /* ControlPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelViewController.swift; sourceTree = "<group>"; };
+		44E6D9B622D4AEB800805B20 /* UIControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlPanel.swift; sourceTree = "<group>"; };
+		44E6D9B922D4AF0C00805B20 /* UIControlPanelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlPanelCollectionViewCell.swift; sourceTree = "<group>"; };
+		44E6D9BC22D4B1FE00805B20 /* ModelControlPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelControlPanelViewController.swift; sourceTree = "<group>"; };
+		44E6D9BE22D4BFFD00805B20 /* InOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOutView.swift; sourceTree = "<group>"; };
+		44E6D9C022D4D43300805B20 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		70D45C42D5F26184625B4E8E /* Pods-Talinor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Talinor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Talinor/Pods-Talinor.debug.xcconfig"; sourceTree = "<group>"; };
 		B47691CD77F4767D33DA69D0 /* Pods-Talinor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Talinor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Talinor/Pods-Talinor.release.xcconfig"; sourceTree = "<group>"; };
 		F1CBE231F74978DE5D2F03B3 /* Pods_Talinor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Talinor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +115,7 @@
 		447A184B22BBB0CB00174422 /* Talinor */ = {
 			isa = PBXGroup;
 			children = (
+				44E6D9B022D4AE6600805B20 /* ControlPanel */,
 				448A164422BD0B1D006E172E /* ScanDevices */,
 				448A164122BCFF11006E172E /* WebViewController */,
 				447A188522BBCF6400174422 /* Menu */,
@@ -121,6 +134,7 @@
 				447A185322BBB0CE00174422 /* Assets.xcassets */,
 				447A185522BBB0CE00174422 /* LaunchScreen.storyboard */,
 				447A185822BBB0CE00174422 /* Info.plist */,
+				44E6D9C022D4D43300805B20 /* Storyboard.storyboard */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -288,6 +302,58 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
+		44E6D9B022D4AE6600805B20 /* ControlPanel */ = {
+			isa = PBXGroup;
+			children = (
+				44E6D9BB22D4B1ED00805B20 /* Model */,
+				44E6D9B822D4AEF900805B20 /* View */,
+				44E6D9B322D4AE7D00805B20 /* Service */,
+				44E6D9B222D4AE7800805B20 /* UI */,
+				44E6D9B122D4AE7200805B20 /* Controller */,
+			);
+			name = ControlPanel;
+			sourceTree = "<group>";
+		};
+		44E6D9B122D4AE7200805B20 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				44E6D9B422D4AE9500805B20 /* ControlPanelViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		44E6D9B222D4AE7800805B20 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				44E6D9B622D4AEB800805B20 /* UIControlPanel.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		44E6D9B322D4AE7D00805B20 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		44E6D9B822D4AEF900805B20 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44E6D9B922D4AF0C00805B20 /* UIControlPanelCollectionViewCell.swift */,
+				44E6D9BE22D4BFFD00805B20 /* InOutView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		44E6D9BB22D4B1ED00805B20 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				44E6D9BC22D4B1FE00805B20 /* ModelControlPanelViewController.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		F1F123987B2C20E1CD8B6199 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				447A185722BBB0CE00174422 /* LaunchScreen.storyboard in Resources */,
+				44E6D9C122D4D43300805B20 /* Storyboard.storyboard in Resources */,
 				447A185422BBB0CE00174422 /* Assets.xcassets in Resources */,
 				447A188022BBC8DD00174422 /* GoogleService-Info.plist in Resources */,
 			);
@@ -435,6 +502,8 @@
 			files = (
 				447A187E22BBB68300174422 /* AuthValidator.swift in Sources */,
 				448A164A22BD0B4D006E172E /* UIScanDevices.swift in Sources */,
+				44E6D9B522D4AE9500805B20 /* ControlPanelViewController.swift in Sources */,
+				44E6D9BA22D4AF0C00805B20 /* UIControlPanelCollectionViewCell.swift in Sources */,
 				448A164822BD0B39006E172E /* ScanDevicesViewController.swift in Sources */,
 				448A164022BCF465006E172E /* UIMenuView.swift in Sources */,
 				447A188422BBCA2900174422 /* AuthController.swift in Sources */,
@@ -442,9 +511,12 @@
 				447A186C22BBB4A800174422 /* FoundationExtensions.swift in Sources */,
 				447A188222BBC9F500174422 /* AppUser.swift in Sources */,
 				447A186822BBB45100174422 /* UILoginView.swift in Sources */,
+				44E6D9B722D4AEB800805B20 /* UIControlPanel.swift in Sources */,
 				447A187022BBB4F100174422 /* UIViewExtensions.swift in Sources */,
+				44E6D9BD22D4B1FE00805B20 /* ModelControlPanelViewController.swift in Sources */,
 				447A188722BBCF7300174422 /* MenuViewController.swift in Sources */,
 				447A187C22BBB65600174422 /* AuthFieldView.swift in Sources */,
+				44E6D9BF22D4BFFD00805B20 /* InOutView.swift in Sources */,
 				447A187722BBB56500174422 /* RegistrationViewController.swift in Sources */,
 				447A184D22BBB0CB00174422 /* AppDelegate.swift in Sources */,
 				447A187222BBB51000174422 /* UIViewControllerExtensions.swift in Sources */,

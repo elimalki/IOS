@@ -6,22 +6,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talinor/AuthController.swift"
-            timestampString = "582818139.057228"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "logOut()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -31,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "checkActualLogin()"
+            landmarkName = "saveData(user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,14 +25,46 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talinor/ScanDevicesViewController.swift"
-            timestampString = "582818139.057446"
+            filePath = "Talinor/UIViewExtensions.swift"
+            timestampString = "584375702.417563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "centralManager(_:didDiscover:advertisementData:rssi:)"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "showSpinner(spinnerStyle:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Talinor):__C.UIView.showSpinner(spinnerStyle: __C.UIActivityIndicatorViewStyle) -&gt; ()"
+                  moduleName = "Talinor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iOSDeveloper/Documents/Works/Talinor/Talinor/Talinor/UIViewExtensions.swift"
+                  timestampString = "584374552.4889441"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "263"
+                  endingLineNumber = "263"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIView) -&gt; Swift.Bool in (extension in Talinor):__C.UIView.showSpinner(spinnerStyle: __C.UIActivityIndicatorViewStyle) -&gt; ()"
+                  moduleName = "Talinor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iOSDeveloper/Documents/Works/Talinor/Talinor/Talinor/UIViewExtensions.swift"
+                  timestampString = "584374552.492331"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "263"
+                  endingLineNumber = "263"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -57,13 +73,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talinor/ScanDevicesViewController.swift"
-            timestampString = "582818139.057894"
+            filePath = "Talinor/UIViewExtensions.swift"
+            timestampString = "584375702.417825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "scanBLEDevices()"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "showSpinner(spinnerStyle:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
