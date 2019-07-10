@@ -110,28 +110,21 @@ extension UIViewController{
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            for _view in view.subviews{
-                if let scrollView = _view as? UIScrollView{
-                    scrollView.setContentOffset(CGPoint(x: 0, y: keyboardSize.height - 100), animated: true)
-                    view.layoutIfNeeded()
-                    return
-                }
-            }
-        }
+        guard  let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        guard let scrollView = (view.subviews.first{ $0 as? UIScrollView != nil}) as? UIScrollView else { return }
+        
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 70, right: 0)
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
-        for _view in view.subviews{
-            if let scrollView = _view as? UIScrollView{
-                scrollView.setContentOffset(.zero, animated: true)
-                view.layoutIfNeeded()
-                return
-            }
-        }
+        guard let scrollView = (view.subviews.first{ $0 as? UIScrollView != nil}) as? UIScrollView else { return }
+        
+        scrollView.contentInset = .zero
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
     
-    func showOkAlert(with title: String = "🍍PineApple🍍", and message: String?, closure: (()->Void)? = nil){
+    func showOkAlert(with title: String = "Talinor", and message: String?, closure: (()->Void)? = nil){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {(_) in
             closure?()
@@ -140,7 +133,7 @@ extension UIViewController{
     }
     
     func showAlertWith(question: String, success: @escaping (()->Void), failed: @escaping (()->Void)) {
-        let alert = UIAlertController(title: "🍍PineApple🍍", message: question, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Talinor", message: question, preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "YES", style: .default, handler: { (_) in
             success()
         })
@@ -162,7 +155,7 @@ extension UIViewController{
     }
     
     func showAlertWith(textField placeholder: String, message: String?, okTitle: String = "OK", cancelTitle: String = "Cancel",  complite: @escaping ((String?)->Void), failed: @escaping (()->Void)){
-        let alert = UIAlertController(title: "🍍PineApple🍍", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Talinor", message: message, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: okTitle, style: .cancel, handler: {(_) in
             complite((alert.textFields![0] as UITextField).text)
@@ -182,7 +175,7 @@ extension UIViewController{
         present(alert, animated: true, completion: nil)
     }
     
-    func showAlertWithField(title: String? = "🍍PineApple🍍", textField placeholder: String, message: String?, complite: @escaping ((String?)->Void)){
+    func showAlertWithField(title: String? = "Talinor", textField placeholder: String, message: String?, complite: @escaping ((String?)->Void)){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: {(_) in

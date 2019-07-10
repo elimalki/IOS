@@ -22,12 +22,13 @@ class UIRegistrationView: UIViewElementsActions{
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = #colorLiteral(red: 0.9793191552, green: 0.9800599217, blue: 0.9794338346, alpha: 1)
         
-        superView.addSubview(imageView)
+        scrollContentView.addSubview(imageView)
         imageView.snp.makeConstraints({ (make) in
             make.top.equalToSuperview().inset(30)
             make.centerX.equalToSuperview()
             make.height.equalTo(80)
             make.width.equalTo(100)
+            make.bottom.equalTo(titleLabel.snp.top).offset(-30)
         })
         return imageView
     }()
@@ -41,7 +42,6 @@ class UIRegistrationView: UIViewElementsActions{
         
         scrollContentView.addSubview(label)
         label.snp.makeConstraints({ (make) in
-            make.top.equalToSuperview().inset(100)
             make.height.equalTo(40)
             make.left.right.equalToSuperview().inset(10)
             make.bottom.equalTo(fieldsStackView.snp.top).offset(-24)

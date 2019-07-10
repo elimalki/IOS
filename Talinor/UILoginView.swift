@@ -20,12 +20,13 @@ class UILoginView: UIViewElementsActions{
         let imageView = UIImageView(image: UIImage(named: "talinor_logo"))
         imageView.contentMode = .scaleAspectFit
         
-        superView.addSubview(imageView)
+        scrollContentView.addSubview(imageView)
         imageView.snp.makeConstraints({ (make) in
             make.top.equalToSuperview().inset(30)
             make.centerX.equalToSuperview()
             make.height.equalTo(80)
             make.width.equalTo(100)
+            make.bottom.equalTo(titleLabel.snp.top).offset(-30)
         })
         return imageView
     }()
@@ -39,7 +40,6 @@ class UILoginView: UIViewElementsActions{
         
         scrollContentView.addSubview(label)
         label.snp.makeConstraints({ (make) in
-            make.top.equalToSuperview().inset(120)
             make.height.equalTo(40)
             make.left.right.equalToSuperview().inset(10)
             make.bottom.equalTo(fieldsStackView.snp.top).offset(-24)

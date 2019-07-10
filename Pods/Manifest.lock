@@ -1,4 +1,5 @@
 PODS:
+  - BlueCapKit (0.7.0)
   - BoringSSL-GRPC (0.0.3):
     - BoringSSL-GRPC/Implementation (= 0.0.3)
     - BoringSSL-GRPC/Interface (= 0.0.3)
@@ -107,6 +108,7 @@ PODS:
   - SnapKit (5.0.0)
 
 DEPENDENCIES:
+  - BlueCapKit (~> 0.7)
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -115,6 +117,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - BlueCapKit
     - BoringSSL-GRPC
     - Firebase
     - FirebaseAnalytics
@@ -134,6 +137,7 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
+  BlueCapKit: b13b8715d4de6f325971c4dd5bc33598697dad2f
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   Firebase: fa80b9d987ca014a1ba9357496ef2a0178b28b12
   FirebaseAnalytics: 1743c5f4de3687d0745709dfdc4b1dea1484f44c
@@ -152,6 +156,6 @@ SPEC CHECKSUMS:
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
 
-PODFILE CHECKSUM: 6b8666975cacc87fda1b3b06ba45f6c87d1d46cf
+PODFILE CHECKSUM: e3df088d233f464a7a61651431b2b00d45a63e84
 
 COCOAPODS: 1.5.3

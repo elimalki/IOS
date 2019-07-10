@@ -70,3 +70,14 @@ extension ControlPanelButtonsType{
         }
     }
 }
+
+enum AppError : Error {
+    case dataCharactertisticNotFound
+    case enabledCharactertisticNotFound
+    case updateCharactertisticNotFound
+    case serviceNotFound
+    case invalidState
+    case resetting
+    case poweredOff
+    case unknown
+}

@@ -21,6 +21,12 @@ class UIControlPanelCollectionViewCell: UICollectionViewCell{
         addSubviews()
     }
     
+    override var isSelected: Bool{
+        didSet{
+            containerView.backgroundColor = isSelected ? #colorLiteral(red: 0.06273943931, green: 0.717831866, blue: 0.05909318477, alpha: 1) : #colorLiteral(red: 0.06273943931, green: 0.5384469628, blue: 0.05909318477, alpha: 1) 
+        }
+    }
+    
     lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.06273943931, green: 0.5384469628, blue: 0.05909318477, alpha: 1)

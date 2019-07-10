@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreBluetooth
+import BlueCapKit
 
 class UIScanDevices: UIViewElementsActions{
     
@@ -117,12 +117,23 @@ class ScanDeviceTableViewCell: UITableViewCell{
         return stackView
     }()
     
-    var data: CBPeripheral?{
+    var data: PeripheralCellData?{
         didSet{
-            nameLabel.text = data?.name
-            uiidLabel.text = data?.identifier.uuidString
+            guard let data = data else { return }
+            
+            nameLabel.text = data.peripheral.name
+            uiidLabel.text = data.peripheral.identifier.uuidString
+            
+            if data.isConnected{
+                backgroundColor = UIColor.green.withAlphaComponent(0.5)
+            } else if data.isConnecting{
+                backgroundColor = UIColor.yellow.withAlphaComponent(0.5)
+            } else {
+                backgroundColor = .white
+            }
         }
     }
+    
     private func addSubviews(){
         stackView.isHidden = false
         layoutIfNeeded()

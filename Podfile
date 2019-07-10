@@ -9,6 +9,7 @@ target 'Talinor' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'SnapKit'
+  pod 'BlueCapKit', '~> 0.7'
   # Pods for Talinor
 
 end

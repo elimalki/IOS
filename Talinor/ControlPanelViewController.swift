@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import BlueCapKit
+import os.log
 
 class ControlPanelViewController: UIViewController{
     
-    init(uiid: String) {
+    init(){
         super.init(nibName: nil, bundle: nil)
-        self.uiid = uiid
+    }
+    
+    init(dataCharacteristic: Characteristic) {
+        super.init(nibName: nil, bundle: nil)
+        self.dataCharacteristic = dataCharacteristic
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -22,6 +28,8 @@ class ControlPanelViewController: UIViewController{
     private var uiid: String!
     lazy var UI = UIControlPanel(superView: self.view)
     private let controllElementsData = ControlPanelButtonsType.allCases
+    private let notificationFeedBack = UINotificationFeedbackGenerator()
+    private var dataCharacteristic : Characteristic!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +43,7 @@ class ControlPanelViewController: UIViewController{
         super.viewWillAppear(animated)
         setupDelegates()
         setupNavBar()
+        read()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,6 +77,36 @@ class ControlPanelViewController: UIViewController{
         let vc = WebViewConteoller(url: URL(string: "http://www.talinor.co.uk/videos")!)
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    private func read(){
+        //read a value from the characteristic
+        let readFuture = self.dataCharacteristic?.read(timeout: 5)
+        readFuture?.onSuccess { (_) in
+            //the value is in the dataValue property
+            let s = String(data:(self.dataCharacteristic?.dataValue)!, encoding: .utf8)
+            DispatchQueue.main.async {
+                print("Read", "Read value is \(String(describing: s))")
+                os_log("Read value is: %@", "\(String(describing: s))")
+            }
+        }
+        readFuture?.onFailure { (error) in
+            os_log("Read error: %@", "\(error.localizedDescription)")
+            print("Read error:\(error.localizedDescription)")
+        }
+    }
+    
+    private func write(text: String){
+        //write a value to the characteristic
+        let writeFuture = self.dataCharacteristic?.write(data:text.data(using: .utf8)!)
+        writeFuture?.onSuccess(completion: { (_) in
+            print("Write:\(text) succes!")
+            os_log("Write: %@ success!", text)
+        })
+        writeFuture?.onFailure(completion: { (error) in
+            os_log("Write failed: %@", "\(error.localizedDescription)")
+            print("Write failed:\(error.localizedDescription)")
+        })
+    }
 }
 
 extension ControlPanelViewController: UICollectionViewDataSource{
@@ -86,11 +125,18 @@ extension ControlPanelViewController: UICollectionViewDataSource{
 
 extension ControlPanelViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Select:", controllElementsData[indexPath.row].title)
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let code = controllElementsData[indexPath.row].title
+        
+        os_log("Select: %@", "\(code ?? "")")
+        print("Select:", code)
+        
+        notificationFeedBack.notificationOccurred(.success)
         
         switch controllElementsData[indexPath.row] {
             case .youtube: openYoutube()
-            default: return
+        default: guard let code = code else { return }; write(text: code)
         }
     }
 }
