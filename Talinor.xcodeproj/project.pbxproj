@@ -38,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		444E854E22D70ACA009A6D62 /* Talinor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Talinor.entitlements; sourceTree = "<group>"; };
 		447A184922BBB0CB00174422 /* Talinor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talinor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		447A184C22BBB0CB00174422 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		447A185322BBB0CE00174422 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +116,7 @@
 		447A184B22BBB0CB00174422 /* Talinor */ = {
 			isa = PBXGroup;
 			children = (
+				444E854E22D70ACA009A6D62 /* Talinor.entitlements */,
 				44E6D9B022D4AE6600805B20 /* ControlPanel */,
 				448A164422BD0B1D006E172E /* ScanDevices */,
 				448A164122BCFF11006E172E /* WebViewController */,
@@ -401,6 +403,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -667,6 +672,7 @@
 			baseConfigurationReference = 70D45C42D5F26184625B4E8E /* Pods-Talinor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Talinor/Talinor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2EHKRYA7EN;
 				INFOPLIST_FILE = Talinor/Info.plist;
@@ -687,6 +693,7 @@
 			baseConfigurationReference = B47691CD77F4767D33DA69D0 /* Pods-Talinor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Talinor/Talinor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2EHKRYA7EN;
 				INFOPLIST_FILE = Talinor/Info.plist;
