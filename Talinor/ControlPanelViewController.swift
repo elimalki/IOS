@@ -10,6 +10,9 @@ import UIKit
 import BlueCapKit
 import os.log
 
+enum State {case INIT, START, BODY}
+enum Line {case Line_xx, Line_01, Line_02}
+
 class ControlPanelViewController: UIViewController{
     
     init(){
@@ -30,6 +33,12 @@ class ControlPanelViewController: UIViewController{
     private let controllElementsData = ControlPanelButtonsType.allCases
     private let notificationFeedBack = UINotificationFeedbackGenerator()
     private var dataCharacteristic : Characteristic!
+    
+    private var cmd_state: State = .INIT
+    private var flag: Line = .Line_xx
+    private var len: Int = 0
+    private var max_size: Int = 16
+    private var cmd_buf: [UInt8] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,12 +90,20 @@ class ControlPanelViewController: UIViewController{
     private func read(){
         //read a value from the characteristic
         let readFuture = self.dataCharacteristic?.read(timeout: 5)
-        readFuture?.onSuccess { (_) in
+        readFuture?.onSuccess { [weak self](_) in
             //the value is in the dataValue property
-            let s = String(data:(self.dataCharacteristic?.dataValue)!, encoding: .utf8)
-            DispatchQueue.main.async {
-                print("Read", "Read value is \(String(describing: s))")
-                os_log("Read value is: %@", "\(String(describing: s))")
+            if let dataValue = self?.dataCharacteristic?.dataValue{
+                let byteArray: [UInt8] = [UInt8](dataValue)
+                self?.handleInput(data_in: byteArray)
+                DispatchQueue.main.async {
+                    print("Read", "Read value is \(byteArray.map{ String($0)}.joined(separator: ","))")
+                    os_log("Read value is: %@", "\(byteArray.map{ String($0)}.joined(separator: ","))")
+                }
+            } else {
+                DispatchQueue.main.async {
+                    print("Read", "Read value is \(String(describing: self?.dataCharacteristic?.dataValue))")
+                    os_log("Read error value is: %@", "\(String(describing: self?.dataCharacteristic?.dataValue))")
+                }
             }
         }
         readFuture?.onFailure { (error) in
@@ -95,18 +112,116 @@ class ControlPanelViewController: UIViewController{
         }
     }
     
-    private func write(text: String){
+    private func write(code: UInt8){
+        var _code = code
         //write a value to the characteristic
-        let writeFuture = self.dataCharacteristic?.write(data:text.data(using: .utf8)!)
+        let writeFuture = self.dataCharacteristic?.write(data: Data(bytes: &_code, count: MemoryLayout.size(ofValue: _code)), timeout: 100, type: .withResponse)
         writeFuture?.onSuccess(completion: { (_) in
-            print("Write:\(text) succes!")
-            os_log("Write: %@ success!", text)
+            print("Write:\(code) succes!")
+            os_log("Write: %@ success!", code)
         })
         writeFuture?.onFailure(completion: { (error) in
             os_log("Write failed: %@", "\(error.localizedDescription)")
             print("Write failed:\(error.localizedDescription)")
         })
     }
+    
+    private func handleInput(data_in: [UInt8]) {
+    var data_len = data_in.count
+    var index = 0
+    var test_byte: UInt8 = 0
+        
+    while (data_len > 0) {
+    switch cmd_state {
+    
+    case .INIT:
+                len = 0
+                index = 0
+                self.cmd_state = State.START
+                self.flag = Line.Line_xx
+    
+                for i in 0..<max_size {
+                    cmd_buf[i] = 32
+                }    // заполняем все пробелами для избегания мигания
+                cmd_buf[max_size] = 0                                 // за границами допустимых символов MAX_LINE_LENGTH добиваем нулем
+    
+    case .START:
+        test_byte = data_in[index]
+    
+        data_len -= 1
+        index += 1
+        
+        // reset lines if there is special symbol
+        if (test_byte == 0x01) {
+            flag = Line.Line_01;
+            len = 0;
+            cmd_state = State.BODY;
+            for i in 0..<max_size {
+                cmd_buf[i] = 32
+            }
+            UI.modeView.valueLabel.text = cmd_buf.map{ String( $0 ) }.joined()
+        }
+        
+        if (test_byte == 0x02) {
+            flag = Line.Line_02;
+            len = 0;
+            cmd_state = State.BODY;
+            for i in 0..<max_size {
+                cmd_buf[i] = 32
+            }
+            UI.regularView.valueLabel.text = cmd_buf.map{ String( $0 ) }.joined()
+        }
+    
+    case .BODY:
+        test_byte = data_in[index];
+        
+        data_len -= 1
+        index += 1
+        
+        // reset lines if there is special symbol
+        if (test_byte == 0x01) {
+            flag = Line.Line_01;
+            len = 0;
+            for i in 0..<max_size {
+                cmd_buf[i] = 32
+            }
+            UI.modeView.valueLabel.text = cmd_buf.map{ String( $0 ) }.joined()
+            break;
+        }
+        
+        if (test_byte == 0x02) {
+            flag = Line.Line_02;
+            len = 0;
+            for i in 0..<max_size {
+                cmd_buf[i] = 32
+            }
+            UI.regularView.valueLabel.text = cmd_buf.map{ String( $0 ) }.joined()
+            break;
+        }
+        
+        // check if this is printable ASCII char
+        if ((test_byte >= 32) && (test_byte <= 126)) {
+            cmd_buf[len] = test_byte;
+            len += 1
+        }
+        
+        // plot the lines depend flag
+        if (flag == Line.Line_01) {
+            UI.modeView.valueLabel.text = cmd_buf.map{ String( $0 ) }.joined()
+        }
+        
+        if (flag == Line.Line_02) {
+            UI.regularView.valueLabel.text = cmd_buf.map{ String( $0 ) }.joined()
+        }
+        
+        // wait for new start symbol if len more than max allowed
+        if (len >= max_size) {
+            flag = Line.Line_xx;
+            cmd_state = State.START;
+        }
+      }
+    }
+  }
 }
 
 extension ControlPanelViewController: UICollectionViewDataSource{
@@ -127,16 +242,16 @@ extension ControlPanelViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        let code = controllElementsData[indexPath.row].title
+        let code = controllElementsData[indexPath.row].code
         
-        os_log("Select: %@", "\(code ?? "")")
+        os_log("Select: %@", "\(code)")
         print("Select:", code)
-        
+
         notificationFeedBack.notificationOccurred(.success)
         
         switch controllElementsData[indexPath.row] {
             case .youtube: openYoutube()
-        default: guard let code = code else { return }; write(text: code)
+        default: guard let code = code else { return }; write(code: code)
         }
     }
 }

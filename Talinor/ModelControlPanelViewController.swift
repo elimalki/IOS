@@ -69,6 +69,28 @@ extension ControlPanelButtonsType{
             default: return UIScreen.main.bounds.width / 6
         }
     }
+    var code: UInt8? {
+        switch self {
+        case .zero: return 0x00
+        case .one: return 0x01
+        case .two: return 0x02
+        case .three: return 0x03
+        case .four: return 0x04
+        case .five: return 0x05
+        case .six: return 0x06
+        case .seven: return 0x07
+        case .eight: return 0x08
+        case .nine: return 0x09
+        case .mode: return 0x0A
+        case .up: return 0x0B
+        case .down: return 0x0D
+        case .enter: return 0x0C
+        case .snowflake: return 0x0E
+        case .hashtag: return 0x0F
+        
+        default: return nil
+        }
+    }
 }
 
 enum AppError : Error {

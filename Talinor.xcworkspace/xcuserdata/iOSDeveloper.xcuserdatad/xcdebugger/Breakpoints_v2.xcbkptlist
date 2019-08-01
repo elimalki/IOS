@@ -306,5 +306,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talinor/ControlPanelViewController.swift"
+            timestampString = "586353496.455162"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "write(code:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talinor.ControlPanelViewController.(write in _68C1C7A8D90424B6F25D4E82A99CE3EF)(code: Swift.UInt8) -&gt; ()"
+                  moduleName = "Talinor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iOSDeveloper/Documents/Works/Talinor/Talinor/Talinor/ControlPanelViewController.swift"
+                  timestampString = "586350222.538924"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (()) -&gt; () in Talinor.ControlPanelViewController.(write in _68C1C7A8D90424B6F25D4E82A99CE3EF)(code: Swift.UInt8) -&gt; ()"
+                  moduleName = "Talinor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iOSDeveloper/Documents/Works/Talinor/Talinor/Talinor/ControlPanelViewController.swift"
+                  timestampString = "586350222.540868"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

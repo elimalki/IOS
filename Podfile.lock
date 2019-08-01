@@ -6,8 +6,13 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.3):
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
+  - Crashlytics (3.13.0):
+    - Fabric (~> 1.10.0)
+  - Fabric (1.10.0)
   - Firebase (6.0.0):
     - Firebase/Core (= 6.0.0)
+  - Firebase/Analytics (6.0.0):
+    - Firebase/Core
   - Firebase/Auth (6.0.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.0.0)
@@ -109,7 +114,10 @@ PODS:
 
 DEPENDENCIES:
   - BlueCapKit (~> 0.7)
+  - Crashlytics
+  - Fabric
   - Firebase
+  - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
@@ -119,6 +127,8 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BlueCapKit
     - BoringSSL-GRPC
+    - Crashlytics
+    - Fabric
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -139,6 +149,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   BlueCapKit: b13b8715d4de6f325971c4dd5bc33598697dad2f
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
+  Crashlytics: 1f5f752c7feac0add0cc1774756f96444fa3b1a7
+  Fabric: 09de1e053eb7dc415593166ad3e53d4c88123405
   Firebase: fa80b9d987ca014a1ba9357496ef2a0178b28b12
   FirebaseAnalytics: 1743c5f4de3687d0745709dfdc4b1dea1484f44c
   FirebaseAuth: efc72b0f6fe075d2a6de8d81a6d9de83ef2b47eb
@@ -156,6 +168,6 @@ SPEC CHECKSUMS:
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
 
-PODFILE CHECKSUM: e3df088d233f464a7a61651431b2b00d45a63e84
+PODFILE CHECKSUM: 7ac81a6461d91103a2cf0b562427c149efb857a1
 
 COCOAPODS: 1.5.3

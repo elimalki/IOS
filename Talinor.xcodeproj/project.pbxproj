@@ -377,6 +377,7 @@
 				447A184622BBB0CB00174422 /* Frameworks */,
 				447A184722BBB0CB00174422 /* Resources */,
 				7DF791EBEE9B98EFD2A249E8 /* [CP] Embed Pods Frameworks */,
+				44CD23A122F302D5007A4943 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -443,6 +444,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		44CD23A122F302D5007A4943 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
+		};
 		504F3DBB7037EEC93781E866 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -674,6 +692,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Talinor/Talinor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2EHKRYA7EN;
 				INFOPLIST_FILE = Talinor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -695,6 +714,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Talinor/Talinor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2EHKRYA7EN;
 				INFOPLIST_FILE = Talinor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

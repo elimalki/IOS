@@ -10,6 +10,13 @@ target 'Talinor' do
   pod 'Firebase/Firestore'
   pod 'SnapKit'
   pod 'BlueCapKit', '~> 0.7'
+  
+  # Pods for PodTest
+  pod 'Fabric'
+  pod 'Crashlytics'
+  
+  # (Recommended) Pod for Google Analytics
+  pod 'Firebase/Analytics'
   # Pods for Talinor
 
 end
