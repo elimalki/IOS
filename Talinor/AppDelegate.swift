@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: ControlPanelViewController())
+        window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
         window?.makeKeyAndVisible()
         return true
     }
