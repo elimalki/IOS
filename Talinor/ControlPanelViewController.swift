@@ -118,7 +118,7 @@ class ControlPanelViewController: UIViewController{
         let writeFuture = self.dataCharacteristic?.write(data: Data(bytes: &_code, count: MemoryLayout.size(ofValue: _code)), timeout: 100, type: .withResponse)
         writeFuture?.onSuccess(completion: { (_) in
             print("Write:\(code) succes!")
-            os_log("Write: %@ success!", code)
+            os_log("Write: %@ success!", "\(code)")
         })
         writeFuture?.onFailure(completion: { (error) in
             os_log("Write failed: %@", "\(error.localizedDescription)")
