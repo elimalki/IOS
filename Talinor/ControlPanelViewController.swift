@@ -112,10 +112,56 @@ class ControlPanelViewController: UIViewController{
         }
     }
     
-    private func write(code: UInt8){
-        var _code = code
+    private func writeOne(code: UInt8){
+        guard let data = "\(code)".data(using: .windowsCP1252, allowLossyConversion: true) else { return }
         //write a value to the characteristic
-        let writeFuture = self.dataCharacteristic?.write(data: Data(bytes: &_code, count: MemoryLayout.size(ofValue: _code)), timeout: 100, type: .withResponse)
+        
+        let writeFuture = self.dataCharacteristic?.write(data: data, timeout: 100, type: .withResponse)
+        writeFuture?.onSuccess(completion: { (_) in
+            print("Write:\(code) succes!")
+            os_log("Write: %@ success!", "\(code)")
+        })
+        writeFuture?.onFailure(completion: { (error) in
+            os_log("Write failed: %@", "\(error.localizedDescription)")
+            print("Write failed:\(error.localizedDescription)")
+        })
+    }
+    
+    private func writeTwo(code: UInt8){
+        guard let data = "\(code)".data(using: .utf8) else { return }
+        //write a value to the characteristic
+        
+        let writeFuture = self.dataCharacteristic?.write(data: data, timeout: 100, type: .withResponse)
+        writeFuture?.onSuccess(completion: { (_) in
+            print("Write:\(code) succes!")
+            os_log("Write: %@ success!", "\(code)")
+        })
+        writeFuture?.onFailure(completion: { (error) in
+            os_log("Write failed: %@", "\(error.localizedDescription)")
+            print("Write failed:\(error.localizedDescription)")
+        })
+    }
+    
+    private func writeThree(code: UInt8){
+        guard let data = "\(code)".data(using: .ascii) else { return }
+        //write a value to the characteristic
+        
+        let writeFuture = self.dataCharacteristic?.write(data: data, timeout: 100, type: .withResponse)
+        writeFuture?.onSuccess(completion: { (_) in
+            print("Write:\(code) succes!")
+            os_log("Write: %@ success!", "\(code)")
+        })
+        writeFuture?.onFailure(completion: { (error) in
+            os_log("Write failed: %@", "\(error.localizedDescription)")
+            print("Write failed:\(error.localizedDescription)")
+        })
+    }
+    
+    private func writeFour(code: UInt8){
+        
+        let data = Data(bytes: [code], count: MemoryLayout<UInt8>.size)
+        
+        let writeFuture = self.dataCharacteristic?.write(data: data)
         writeFuture?.onSuccess(completion: { (_) in
             print("Write:\(code) succes!")
             os_log("Write: %@ success!", "\(code)")
@@ -251,7 +297,11 @@ extension ControlPanelViewController: UICollectionViewDelegate{
         
         switch controllElementsData[indexPath.row] {
             case .youtube: openYoutube()
-        default: guard let code = code else { return }; write(code: code)
+            case .one: writeOne(code: code!)
+            case .two: writeTwo(code: code!)
+            case .three: writeThree(code: code!)
+            case .four: writeFour(code: code!)
+        default: guard let _code = code else { return }; writeOne(code: _code)
         }
     }
 }

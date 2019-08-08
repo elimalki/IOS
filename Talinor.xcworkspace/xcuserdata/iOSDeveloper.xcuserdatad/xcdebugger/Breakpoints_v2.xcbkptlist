@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talinor/ScanDevicesViewController.swift"
-            timestampString = "584445671.357657"
+            timestampString = "586879576.961859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "212"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talinor/ScanDevicesViewController.swift"
-            timestampString = "584445671.358278"
+            timestampString = "586879576.961972"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "209"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talinor/ScanDevicesViewController.swift"
-            timestampString = "584445671.358835"
+            timestampString = "586879576.962052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "211"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talinor/ScanDevicesViewController.swift"
-            timestampString = "584445671.359261"
+            timestampString = "586879576.962129"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "215"
@@ -249,7 +249,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talinor/ScanDevicesViewController.swift"
-            timestampString = "584445671.36"
+            timestampString = "586879576.96224"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
@@ -265,7 +265,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talinor/ScanDevicesViewController.swift"
-            timestampString = "584445671.360391"
+            timestampString = "586879576.962293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
@@ -313,45 +313,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talinor/ControlPanelViewController.swift"
-            timestampString = "586353496.455162"
+            timestampString = "586879610.916271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "write(code:)"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Talinor.ControlPanelViewController.(write in _68C1C7A8D90424B6F25D4E82A99CE3EF)(code: Swift.UInt8) -&gt; ()"
-                  moduleName = "Talinor"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/iOSDeveloper/Documents/Works/Talinor/Talinor/Talinor/ControlPanelViewController.swift"
-                  timestampString = "586350222.538924"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "304">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (()) -&gt; () in Talinor.ControlPanelViewController.(write in _68C1C7A8D90424B6F25D4E82A99CE3EF)(code: Swift.UInt8) -&gt; ()"
-                  moduleName = "Talinor"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/iOSDeveloper/Documents/Works/Talinor/Talinor/Talinor/ControlPanelViewController.swift"
-                  timestampString = "586350222.540868"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "119"
-                  endingLineNumber = "119"
-                  offsetFromSymbolStart = "88">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talinor/ControlPanelViewController.swift"
+            timestampString = "586879611.213732"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talinor/ControlPanelViewController.swift"
+            timestampString = "586879611.4859411"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talinor/ControlPanelViewController.swift"
+            timestampString = "586879612.0010459"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
