@@ -52,7 +52,6 @@ class ControlPanelViewController: UIViewController{
         super.viewWillAppear(animated)
         setupDelegates()
         setupNavBar()
-        read()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -100,13 +99,17 @@ class ControlPanelViewController: UIViewController{
                     os_log("Read value is: %@", "\(byteArray.map{ String($0)}.joined(separator: ","))")
                 }
             } else {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    self?.UI.modeView.valueLabel.text = "Read value is \(String(describing: self?.dataCharacteristic?.dataValue))"
+                    
                     print("Read", "Read value is \(String(describing: self?.dataCharacteristic?.dataValue))")
                     os_log("Read error value is: %@", "\(String(describing: self?.dataCharacteristic?.dataValue))")
                 }
             }
         }
-        readFuture?.onFailure { (error) in
+        readFuture?.onFailure { [weak self] (error) in
+            self?.UI.modeView.valueLabel.text = "\(error.localizedDescription)"
+            
             os_log("Read error: %@", "\(error.localizedDescription)")
             print("Read error:\(error.localizedDescription)")
         }
@@ -117,11 +120,15 @@ class ControlPanelViewController: UIViewController{
         //write a value to the characteristic
         
         let writeFuture = self.dataCharacteristic?.write(data: data, timeout: 100, type: .withResponse)
-        writeFuture?.onSuccess(completion: { (_) in
+        writeFuture?.onSuccess(completion: { [weak self] (_) in
+            self?.read()
+            self?.UI.modeView.valueLabel.text = "Write:\(code) succes!"
             print("Write:\(code) succes!")
             os_log("Write: %@ success!", "\(code)")
         })
-        writeFuture?.onFailure(completion: { (error) in
+        writeFuture?.onFailure(completion: { [weak self] (error) in
+            self?.UI.modeView.valueLabel.text = "\(error.localizedDescription)"
+            
             os_log("Write failed: %@", "\(error.localizedDescription)")
             print("Write failed:\(error.localizedDescription)")
         })
@@ -132,11 +139,15 @@ class ControlPanelViewController: UIViewController{
         //write a value to the characteristic
         
         let writeFuture = self.dataCharacteristic?.write(data: data, timeout: 100, type: .withResponse)
-        writeFuture?.onSuccess(completion: { (_) in
+        writeFuture?.onSuccess(completion: { [weak self] (_) in
+            self?.read()
+            self?.UI.modeView.valueLabel.text = "Write:\(code) succes!"
             print("Write:\(code) succes!")
             os_log("Write: %@ success!", "\(code)")
         })
-        writeFuture?.onFailure(completion: { (error) in
+        writeFuture?.onFailure(completion: { [weak self] (error) in
+            self?.UI.modeView.valueLabel.text = "\(error.localizedDescription)"
+            
             os_log("Write failed: %@", "\(error.localizedDescription)")
             print("Write failed:\(error.localizedDescription)")
         })
@@ -147,11 +158,15 @@ class ControlPanelViewController: UIViewController{
         //write a value to the characteristic
         
         let writeFuture = self.dataCharacteristic?.write(data: data, timeout: 100, type: .withResponse)
-        writeFuture?.onSuccess(completion: { (_) in
+        writeFuture?.onSuccess(completion: { [weak self] (_) in
+            self?.read()
+            self?.UI.modeView.valueLabel.text = "Write:\(code) succes!"
             print("Write:\(code) succes!")
             os_log("Write: %@ success!", "\(code)")
         })
-        writeFuture?.onFailure(completion: { (error) in
+        writeFuture?.onFailure(completion: { [weak self] (error) in
+            self?.UI.modeView.valueLabel.text = "\(error.localizedDescription)"
+            
             os_log("Write failed: %@", "\(error.localizedDescription)")
             print("Write failed:\(error.localizedDescription)")
         })
@@ -162,11 +177,15 @@ class ControlPanelViewController: UIViewController{
         let data = Data(bytes: [code], count: MemoryLayout<UInt8>.size)
         
         let writeFuture = self.dataCharacteristic?.write(data: data)
-        writeFuture?.onSuccess(completion: { (_) in
+        writeFuture?.onSuccess(completion: { [weak self] (_) in
+            self?.read()
+            self?.UI.modeView.valueLabel.text = "Write:\(code) succes!"
             print("Write:\(code) succes!")
             os_log("Write: %@ success!", "\(code)")
         })
-        writeFuture?.onFailure(completion: { (error) in
+        writeFuture?.onFailure(completion: { [weak self] (error) in
+            self?.UI.modeView.valueLabel.text = "\(error.localizedDescription)"
+            
             os_log("Write failed: %@", "\(error.localizedDescription)")
             print("Write failed:\(error.localizedDescription)")
         })
@@ -176,6 +195,8 @@ class ControlPanelViewController: UIViewController{
     var data_len = data_in.count
     var index = 0
     var test_byte: UInt8 = 0
+        
+    UI.modeView.valueLabel.text = data_in.map{ String( $0 ) }.joined(separator: "/")
         
     while (data_len > 0) {
     switch cmd_state {
